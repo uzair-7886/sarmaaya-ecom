@@ -3,3 +3,9 @@ export const GetCategories=async ()=>{
             .then(res=>res.json())
             .then(json=>console.log(json))
 }
+
+export const GetAllProducts =async ()=>{
+    await fetch('https://fakestoreapi.com/products/')
+    .then(res=>res.json())
+    .then(json=>console.log(json))
+}
