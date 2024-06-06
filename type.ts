@@ -6,3 +6,5 @@ export interface Product{
     description:string,
     image:string
 }
+
+export type AllProducts=Product[]

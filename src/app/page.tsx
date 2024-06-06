@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
-import ProductCard from "@/components/ProductCard";
+import Products from "@/components/Products";
 
 export default function Home() {
   return (
   <>
     <Navbar/>
-    <ProductCard/>
+    <Products/>
   </>
   );
 }
