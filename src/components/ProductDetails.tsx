@@ -10,6 +10,7 @@ function ProductDetails({ id }: { id: string }) {
             try {
                 const res = await fetch(`https://fakestoreapi.com/products/${id}`);
                 const json = await res.json();
+                console.log(json)
                 setProduct(json);
             } catch (error) {
                 console.error('Error fetching product:', error);

@@ -4,7 +4,7 @@ export interface Product{
     price:string,
     category:string,
     description:string,
-    image:string
+    image:string,
 }
 
 export type AllProducts=Product[]

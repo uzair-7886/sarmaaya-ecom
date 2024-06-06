@@ -2,10 +2,14 @@
 import Link from "next/link";
 import { Playfair } from "next/font/google";
 import { cn } from "../../lib";
+import { useSelector } from 'react-redux';
+import { selectTotalItems } from "@/redux/cartSlice";
 
 const pf = Playfair({ subsets: ["latin"] });
 
 const Navbar = () => {
+  const totalItems = useSelector(selectTotalItems);
+
   const categories = [
     {
       name:"Electronics",
@@ -24,6 +28,7 @@ const Navbar = () => {
       link:"jewelery"
     }
   ];
+
   return (
     <div>
       <div className="flex flex-row p-5 justify-between items-center">
@@ -52,7 +57,7 @@ const Navbar = () => {
           </div>
           <Link href='/cart' className="w-20 bg-black rounded-xl flex flex-row justify-center items-center gap-2">
 <div className="text-white">
-    0
+    {totalItems}
 </div>
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
