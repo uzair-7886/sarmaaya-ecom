@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { Product } from '../../type';
+import Link from 'next/link';
 
 type ProductCardProps = {
   product: Product;
@@ -29,9 +30,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const truncatedTitle = truncateTitle(product.title, 60);
 
   return (
-    <div className="w-[300px] h-[550px] shadow-xl rounded-[10px] flex flex-col justify-between">
+    <Link href={{ pathname: `/${product?.id}`, query: { id: product?.id } }} className="w-[300px] h-[550px] shadow-xl rounded-[10px] flex flex-col justify-between">
       <img src={product.image} alt={product.title} className="w-full h-2/5 p-3 object-contain rounded-[10px]" />
-      <h2 className='px-3 pt-2 font-bold'>{product.title}</h2>
+      <h2 className='px-3 pt-2 font-bold'>{truncatedTitle}</h2>
       <p className='text-xs px-3 py-2 '>{product.category}</p>
       <p className='text-sm px-3 py-5'>{truncatedDescription}</p>
       <p className='px-3 '>Price: <span className='font-bold'>${product.price}</span></p>
@@ -41,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <img src="cart.png" alt="cart" className='h-5'/>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
