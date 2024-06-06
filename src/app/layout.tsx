@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(" py-10 max-w-7xl mx-auto text-justify",inter.className)}>{children}</body>
+      
     </html>
   );
 }

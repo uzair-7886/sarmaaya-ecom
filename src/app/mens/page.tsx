@@ -2,11 +2,11 @@ import Navbar from "@/components/Navbar";
 import Products from "@/components/Products";
 
 export default function Home() {
-  const allProducts='https://fakestoreapi.com/products'
+  const electronicsProducts:string="https://fakestoreapi.com/products/category/men's clothing"
   return (
   <>
     <Navbar/>
-    <Products apiString={allProducts}/>
+    <Products apiString={electronicsProducts}/>
   </>
   );
 }

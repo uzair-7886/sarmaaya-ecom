@@ -7,20 +7,32 @@ const pf = Playfair({ subsets: ["latin"] });
 
 const Navbar = () => {
   const categories = [
-    "Electronics",
-    "Men's Fashion",
-    "Women's Fashion",
-    "Jewelery",
+    {
+      name:"Electronics",
+      link:"electronics"
+    },
+    {
+      name: "Men's Fashion",
+      link: "mens"
+    },
+    {
+      name: "Women's Fashion",
+      link: "womens"
+    },
+    {
+      name:"Jewelery",
+      link:"jewelery"
+    }
   ];
   return (
     <div>
       <div className="flex flex-row p-5 justify-between items-center">
         <div>
-          <h1 className={cn("font-bold text-2xl", pf.className)}>Ecommerce</h1>
+          <Link href="/" className={cn("font-bold text-2xl", pf.className)}>Ecommerce</Link>
         </div>
         <div className="flex flex-row gap-5">
           {categories.map((cat) => (
-            <Link href="#" className="hover:font-bold">{cat}</Link>
+            <Link href={cat.link} className="hover:font-bold">{cat.name}</Link>
           ))}
         </div>
 
@@ -38,7 +50,7 @@ const Navbar = () => {
 
             {/* <div className="w-0 ml-2 bg-black">.</div> */}
           </div>
-          <div className="w-20 bg-black rounded-xl flex flex-row justify-center items-center gap-2">
+          <Link href='/cart' className="w-20 bg-black rounded-xl flex flex-row justify-center items-center gap-2">
 <div className="text-white">
     0
 </div>
@@ -49,7 +61,7 @@ const Navbar = () => {
 <path d="M9 8H21" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
-          </div>
+          </Link>
         </div>
       </div>
     </div>

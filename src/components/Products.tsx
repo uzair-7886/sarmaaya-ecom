@@ -3,13 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { AllProducts, Product } from '../../type';
 import ProductCard from './ProductCard';
 
-function Products() {
+type ProductsProps = {
+  apiString: string;
+};
+
+const Products: React.FC<ProductsProps> = ({ apiString }) => {
   const [products, setProducts] = useState<AllProducts | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch('https://fakestoreapi.com/products');
+        const res = await fetch(apiString);
         const json: AllProducts = await res.json();
         setProducts(json);
         console.log(json);
@@ -19,7 +23,7 @@ function Products() {
     };
 
     fetchProduct();
-  }, []);
+  }, [apiString]);
 
   if (!products) {
     return <div>Loading...</div>;
@@ -32,6 +36,6 @@ function Products() {
       ))}
     </div>
   );
-}
+};
 
 export default Products;
