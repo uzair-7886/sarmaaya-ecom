@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { Product } from '../../../type';
+"use client"
 import React from 'react';
 import ProductDetails from '@/components/ProductDetails';
 import Navbar from '@/components/Navbar';
