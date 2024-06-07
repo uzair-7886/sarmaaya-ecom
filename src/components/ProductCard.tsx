@@ -59,8 +59,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </Link>
       
       <div className='py-2'>
-        <div className='p-3 w-4/5 rounded-lg bg-black flex flex-row justify-center items-center mx-auto gap-2'>
-          <h1 className='text-white cursor-pointer' onClick={handleAddToCart}>Add to cart</h1>
+        <div className='p-3 w-4/5 rounded-lg bg-black flex flex-row justify-center items-center mx-auto gap-2 cursor-pointer' onClick={handleAddToCart}>
+          <h1 className='text-white ' >Add to cart</h1>
           <img src="cart.png" alt="cart" className='h-5'/>
         </div>
       </div>
