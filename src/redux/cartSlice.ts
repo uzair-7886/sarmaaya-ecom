@@ -7,11 +7,13 @@ interface CartItem extends Product {
 
 interface CartState {
   cart: CartItem[];
+  searchQuery:string
 }
 
 // Define the initial state
 const initialState: CartState = {
   cart: [],
+  searchQuery:''
 };
 
 // Create the Redux slice
@@ -51,11 +53,14 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+    setSearchQuery: (state, action: { payload: string }) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
 // Export the actions
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity,clearCart } =
+export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity,clearCart,setSearchQuery } =
   cartSlice.actions;
 
 // Create selectors
@@ -66,6 +71,7 @@ export const selectTotalItems = createSelector(selectCartItems, (items) =>
 export const selectTotalPrice = createSelector(selectCartItems, (items) =>
   items.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0)
 );
+export const selectSearchQuery = (state: { cart: CartState }) => state.cart.searchQuery;
 
 // Export the reducer
 export default cartSlice.reducer;
