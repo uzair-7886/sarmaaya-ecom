@@ -4,6 +4,8 @@ import { AllProducts, Product } from '../../type';
 import ProductCard from './ProductCard';
 import { useSelector } from 'react-redux';
 import { selectSearchQuery } from '@/redux/cartSlice';
+import { useDispatch } from 'react-redux';
+import { setSearchQuery } from '@/redux/cartSlice';
 
 type ProductsProps = {
   apiString: string;
@@ -12,6 +14,7 @@ type ProductsProps = {
 const Products: React.FC<ProductsProps> = ({ apiString }) => {
   const [products, setProducts] = useState<AllProducts | null>(null);
   const searchQuery = useSelector(selectSearchQuery);
+  const dispatch =useDispatch()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,6 +26,7 @@ const Products: React.FC<ProductsProps> = ({ apiString }) => {
         console.error('Error fetching product:', error);
       }
     };
+    dispatch(setSearchQuery(''))
 
     fetchProduct();
   }, [apiString]);

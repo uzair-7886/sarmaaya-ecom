@@ -1,16 +1,13 @@
 'use client'
-import { useState, useEffect } from 'react';
 import { Product } from '../../type';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/redux/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-function ProductDetails({ id }: { id: string }) {
-    const [product, setProduct] = useState<Product | null>(null);
-    const dispatch=useDispatch()
-    const handleAddToCart = (item:Product) => {
+function ProductDetails({ product }: { product: Product }) {
+    const dispatch = useDispatch()
+    const handleAddToCart = (item: Product) => {
         dispatch(addToCart(item));
         toast.success('Item added to cart successfully', {
           position: "bottom-right",
@@ -22,23 +19,7 @@ function ProductDetails({ id }: { id: string }) {
           progress: undefined,
           theme: "colored",
         });
-        
-      };
-
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-                const json = await res.json();
-                console.log(json)
-                setProduct(json);
-            } catch (error) {
-                console.error('Error fetching product:', error);
-            }
-        };
-
-        fetchProduct();
-    }, [id]); // Add id to the dependency array
+    };
 
     if (!product) {
         return <div>Loading...</div>;
@@ -64,7 +45,7 @@ function ProductDetails({ id }: { id: string }) {
                     <p>Price</p>
                     <h1 className='font-bold text-3xl'>${product.price}</h1>
                 </div>
-                <div className='flex justify-center items-center px-5 cursor-pointer' onClick={()=>handleAddToCart(product)}>
+                <div className='flex justify-center items-center px-5 cursor-pointer' onClick={() => handleAddToCart(product)}>
                     <div className='py-3 w-full flex justify-center items-center bg-black text-white rounded-xl'>
                         Buy now
                     </div>
